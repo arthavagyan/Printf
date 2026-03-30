@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsers.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/26 14:32:40 by artavagy          #+#    #+#             */
+/*   Updated: 2026/03/29 18:11:57 by artavagy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 
 void	parse_width(const char *format, t_list *info, t_flags *flags)
@@ -22,10 +33,10 @@ void	parse_width(const char *format, t_list *info, t_flags *flags)
 
 void	parse_precesion(const char *format, t_list *info, t_flags *flags)
 {
+	flags->precesion = 0;
 	if (format[info->index] == '.')
 	{
 		flags->dot = 1;
-		flags->precesion = 0;
 		info->index++;
 		if (format[info->index] == '*')
 		{

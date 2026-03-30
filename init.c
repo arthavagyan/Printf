@@ -1,24 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/26 14:33:03 by artavagy          #+#    #+#             */
+/*   Updated: 2026/03/29 17:14:33 by artavagy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 
 void	init_type(const char *format, t_list *info, t_flags *flags)
 {
-	printf("index:%ld\n", info->index);
-	printf("countn:%ld\n", info->count);
-	printf("minus:%d\n", flags->minus);
-	printf("plus:%d\n", flags->plus);
-	printf("hash:%d\n", flags->hash);
-	printf("zero:%d\n", flags->zero);
-	printf("space:%d\n", flags->space);
-	printf("width:%d\n", flags->width);
-	printf("precesion:%d\n", flags->precesion);
-	printf("dot:%d", flags->dot);
-/*
 	char	c;
 
+	printf("\nindex:%ld\ncount:%ld\nminus:%d\nplus:%d\nhash:%d\n"
+		"zero:%d\nspace:%d\nwidth:%d\nprecision:%d\ndot:%d\n",
+		info->index, info->count,
+		flags->minus, flags->plus, flags->hash,
+		flags->zero, flags->space,
+		flags->width, flags->precesion, flags->dot);
 	c = format[info->index];
 	if (c == 'i' || c == 'd')
 		print_int(format, info, flags);
-	else if (c == 'x')
+/*	else if (c == 'x')
 		print_hex_lower(format, info, flags);
 	else if (c == 'X')
 		print_hex_upper(format, info, flags);
@@ -52,4 +58,3 @@ void	init_flags(const char *format, t_list *info, t_flags *flags)
 	}
 	conflict_remove(flags);
 }
-

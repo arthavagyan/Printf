@@ -1,45 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   print_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 14:32:25 by artavagy          #+#    #+#             */
-/*   Updated: 2026/03/29 19:05:08 by artavagy         ###   ########.fr       */
+/*   Created: 2026/03/26 15:48:07 by artavagy          #+#    #+#             */
+/*   Updated: 2026/03/29 18:13:05 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_isdigit(int c)
+void	print_int(const char *format, t_list *info, t_flags *flags)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	return (0);
-}
+	int	nb;
+	char	*nb_char;
 
-void	ft_putchar(char c, t_list *info)
-{
-	write(1, &c, 1);
-	info->count++;
-}
-
-void	conflict_remove(t_flags *flags)
-{
-	if (flags->minus)
-		flags->zero = 0;
-	if (flags->precesion >= 0)
-		flags->zero = 0;
-	if (flags->plus)
-		flags->space = 0;
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	nb = va_arg(info->args, int);
+	if (flags->precesion == 0 && nb == 0)
+		nb_char = " ";
+	else
+		nb_char = ft_itoa(nb);
+	printf("digit test:%s", nb_char);
+	printf("\nprecesion:%d", flags->precesion);
 }

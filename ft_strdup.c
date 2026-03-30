@@ -1,40 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 14:32:25 by artavagy          #+#    #+#             */
-/*   Updated: 2026/03/29 19:05:08 by artavagy         ###   ########.fr       */
+/*   Created: 2026/02/02 16:08:28 by artavagy          #+#    #+#             */
+/*   Updated: 2026/03/29 18:59:48 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_isdigit(int c)
+char	*ft_strdup(const char *s)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	return (0);
+	char	*s_copy;
+
+	s_copy = (char *)malloc(ft_strlen(s) + 1);
+	if (!s_copy)
+		return (NULL);
+	ft_strlcpy(s_copy, s, ft_strlen(s) + 1);
+	return (s_copy);
 }
 
-void	ft_putchar(char c, t_list *info)
+static size_t	ft_strlcpy(char dst[], const char src[], size_t size)
 {
-	write(1, &c, 1);
-	info->count++;
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(src);
+	if (size > 0)
+	{
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (len);
 }
 
-void	conflict_remove(t_flags *flags)
-{
-	if (flags->minus)
-		flags->zero = 0;
-	if (flags->precesion >= 0)
-		flags->zero = 0;
-	if (flags->plus)
-		flags->space = 0;
-}
-
-size_t	ft_strlen(const char *s)
+static size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 

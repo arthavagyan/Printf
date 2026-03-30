@@ -6,14 +6,18 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 13:59:16 by artavagy          #+#    #+#             */
-/*   Updated: 2026/03/23 13:59:21 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/03/29 18:12:41 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 int	main(void)
 {
-	ft_printf("Printf Bonus Flag check%-+ #10.3");
+	int	nb;
+
+	nb = 0;
+	ft_printf("%d", nb);
+	//ft_printf("Printf Bonus Flag check%-+ #10.3");
 }
 
 int	ft_printf(const char *format, ...)
