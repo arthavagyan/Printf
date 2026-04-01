@@ -6,20 +6,19 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 16:08:28 by artavagy          #+#    #+#             */
-/*   Updated: 2026/03/29 18:59:48 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/01 18:38:52 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-char	*ft_strdup(const char *s)
+static size_t	ft_strlen(const char *s)
 {
-	char	*s_copy;
+	size_t	i;
 
-	s_copy = (char *)malloc(ft_strlen(s) + 1);
-	if (!s_copy)
-		return (NULL);
-	ft_strlcpy(s_copy, s, ft_strlen(s) + 1);
-	return (s_copy);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
 
 static size_t	ft_strlcpy(char dst[], const char src[], size_t size)
@@ -41,12 +40,13 @@ static size_t	ft_strlcpy(char dst[], const char src[], size_t size)
 	return (len);
 }
 
-static size_t	ft_strlen(const char *s)
+char	*ft_strdup(const char *s)
 {
-	size_t	i;
+	char	*s_copy;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	s_copy = (char *)malloc(ft_strlen(s) + 1);
+	if (!s_copy)
+		return (NULL);
+	ft_strlcpy(s_copy, s, ft_strlen(s) + 1);
+	return (s_copy);
 }

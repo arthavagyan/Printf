@@ -6,7 +6,7 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 13:59:16 by artavagy          #+#    #+#             */
-/*   Updated: 2026/03/29 18:12:41 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/01 20:47:08 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -16,8 +16,11 @@ int	main(void)
 	int	nb;
 
 	nb = 0;
-	ft_printf("%d", nb);
-	//ft_printf("Printf Bonus Flag check%-+ #10.3");
+	//ft_printf("%#08x", 42);//zero hash 8
+	//ft_printf("%+08d", 42);//zero plus 8
+	//ft_printf("%-#8x", 42);// minus hash 8
+	ft_printf("% 08d", 42);
+	//ft_printf("%d", nb);//ft_printf("Printf Bonus Flag check%-+ #10.3");
 }
 
 int	ft_printf(const char *format, ...)

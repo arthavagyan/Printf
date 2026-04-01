@@ -6,12 +6,12 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 23:40:29 by artavagy          #+#    #+#             */
-/*   Updated: 2026/03/29 19:00:37 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/01 19:54:44 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static size_t	number_len(long number)
+static size_t	number_len1(long number)
 {
 	long	n;
 	size_t	len;
@@ -51,7 +51,7 @@ char	*ft_itoa(int n)
 
 	number = n;
 	sign = 1;
-	len = number_len(number);
+	len = number_len1(number);
 	if_negative (&number, &sign);
 	result = malloc(len + 1);
 	result[len + 1] = '\0';
@@ -68,4 +68,4 @@ char	*ft_itoa(int n)
 		len--;
 	}
 	return (result);
-}=
+}

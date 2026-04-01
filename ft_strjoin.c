@@ -6,23 +6,19 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:03:24 by artavagy          #+#    #+#             */
-/*   Updated: 2026/03/29 19:03:39 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/01 20:11:40 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static size_t	ft_strlen(const char *s)
 {
-	char	*result;
+	size_t	i;
 
-	if (!s1 || !s2)
-		return (NULL);
-	result = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!result)
-		return (NULL);
-	ft_strlcpy(result, s1, ft_strlen(s1) + 1);
-	ft_strlcat(result, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
-	return (result);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
 
 static size_t	ft_strlcpy(char dst[], const char src[], size_t size)
@@ -64,12 +60,17 @@ static size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	return (dst_len + src_len);
 }
 
-static size_t	ft_strlen(const char *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	char	*result;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (!s1 || !s2)
+		return (NULL);
+	result = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!result)
+		return (NULL);
+	ft_strlcpy(result, s1, ft_strlen(s1) + 1);
+	ft_strlcat(result, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
+	return (result);
 }
+

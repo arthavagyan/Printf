@@ -6,7 +6,7 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 13:59:41 by artavagy          #+#    #+#             */
-/*   Updated: 2026/03/29 19:05:22 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/01 20:15:27 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -40,14 +40,14 @@ int		ft_printf(const char *format, ...);
 int		ft_isdigit(int c);
 
 void	parse_precesion(const char *format, t_list *info, t_flags *flags);
-//void	print_hex_upper(const char *format, t_list info, t_flags flags);
-//void	print_hex_lower(const char *format, t_list info, t_flags flags);
-//void	print_unsigned(const char *format, t_list info, t_flags flags);
+void	print_hex_upper(const char *format, t_list *info, t_flags *flags);
+void	print_hex_lower(const char *format, t_list *info, t_flags *flags);
+void	print_unsigned(const char *format, t_list *info, t_flags *flags);
 void	parse_width(const char *format, t_list *info, t_flags *flags);
-//void	print_string(const char *format, t_list info, t_flags flags);
+void	print_string(const char *format, t_list *info, t_flags *flags);
 void	init_flags(const char *format, t_list *info, t_flags *flags);
 void	init_type(const char *format, t_list *info, t_flags *flags);
-//void	print_char(const char *format, t_list info, t_flags flags);
+void	print_char(const char *format, t_list *info, t_flags *flags);
 void	print_int(const char *format, t_list *info, t_flags *flags);
 void	parse_format(const char *format, t_list *info);
 void	parse_flags(const char *format, t_list *info);
@@ -56,7 +56,7 @@ void	conflict_remove(t_flags *flags);
 void	flag_zero_fill(t_flags *flags);
 
 size_t	number_len(long number);
-size_t	ft_strlen(const char *s);
+//size_t	ft_strlen(const char *s);
 
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s);

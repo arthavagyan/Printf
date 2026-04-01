@@ -6,7 +6,7 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 14:33:03 by artavagy          #+#    #+#             */
-/*   Updated: 2026/03/29 17:14:33 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/01 18:22:06 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -24,7 +24,7 @@ void	init_type(const char *format, t_list *info, t_flags *flags)
 	c = format[info->index];
 	if (c == 'i' || c == 'd')
 		print_int(format, info, flags);
-/*	else if (c == 'x')
+	else if (c == 'x')
 		print_hex_lower(format, info, flags);
 	else if (c == 'X')
 		print_hex_upper(format, info, flags);
@@ -35,7 +35,6 @@ void	init_type(const char *format, t_list *info, t_flags *flags)
 	else if (c == 'c')
 		print_char(format, info, flags);
 	info->index++;
-*/
 }
 
 void	init_flags(const char *format, t_list *info, t_flags *flags)
