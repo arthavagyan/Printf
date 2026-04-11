@@ -33,10 +33,11 @@ void	parse_width(const char *format, t_list *info, t_flags *flags)
 
 void	parse_precesion(const char *format, t_list *info, t_flags *flags)
 {
-	flags->precesion = 0;
+	flags->precesion = -1;
 	if (format[info->index] == '.')
 	{
 		flags->dot = 1;
+		flags->precesion = 0;
 		info->index++;
 		if (format[info->index] == '*')
 		{

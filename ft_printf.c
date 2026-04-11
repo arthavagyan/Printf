@@ -13,14 +13,56 @@
 
 int	main(void)
 {
-	int	nb;
-
-	nb = 0;
-	//ft_printf("%#08x", 42);//zero hash 8
-	//ft_printf("%+08d", 42);//zero plus 8
-	//ft_printf("%-#8x", 42);// minus hash 8
-	ft_printf("% 08d", 42);
-	//ft_printf("%d", nb);//ft_printf("Printf Bonus Flag check%-+ #10.3");
+	ft_printf("%-d");// minus
+	printf("\n\n");
+	ft_printf("%0d");// zero
+	printf("\n\n");
+	ft_printf("%+d");// plus
+	printf("\n\n");
+	ft_printf("% d");// space
+	printf("\n\n");
+	ft_printf("%#d");// hash
+	printf("\n\n");
+	ft_printf("%-0d");// minus zero
+	printf("\n\n");
+	ft_printf("%0-d");// zero minus
+	printf("\n\n");
+	ft_printf("%+-d");// plus minus
+	printf("\n\n");
+	ft_printf("% -+d");// space minus plus
+	printf("\n\n");
+	ft_printf("%5d");// width 5
+	printf("\n\n");
+	ft_printf("%123d");// width 123
+	printf("\n\n");
+	ft_printf("%.5d");// precesion 5
+	printf("\n\n");
+	ft_printf("%.123d");// precesion 123
+	printf("\n\n");
+	ft_printf("%5.3d");// width 5 precesion 3
+	printf("\n\n");
+	ft_printf("%10.0d");// width 10 precesion 0
+	printf("\n\n");
+	ft_printf("%-5d");// minus width 5
+	printf("\n\n");
+	ft_printf("%05d");// zero width 5
+	printf("\n\n");
+	ft_printf("%+8d");// plus width 8
+	printf("\n\n");
+	ft_printf("%-.5d");// minus precesion 5
+	printf("\n\n");
+	ft_printf("%+.3d");// plus precesion 3
+	printf("\n\n");
+	ft_printf("% .5d");// space precesion 5
+	printf("\n\n");
+	ft_printf("%-5.3d");// minus width 5 precesion 3
+	printf("\n\n");
+	ft_printf("%05.3d");// zero width 5 precesion 3
+	printf("\n\n");
+	ft_printf("%+8.4d");// plus width 8 precesion 4
+	printf("\n\n");
+	ft_printf("% -#10.5d");// space minus hash width 10 precesion 5
+	printf("\n\n");
 }
 
 int	ft_printf(const char *format, ...)

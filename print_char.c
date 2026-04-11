@@ -13,4 +13,5 @@
 
 void	print_char(const char *format, t_list *info, t_flags *flags)
 {
+    return ;
 }

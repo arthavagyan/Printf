@@ -13,7 +13,15 @@
 
 void	print_int(const char *format, t_list *info, t_flags *flags)
 {
-	int		nb;
+	printf("\nindex:%ld\ncount:%ld\nminus:%d\nplus:%d\nhash:%d\n"
+	"zero:%d\nspace:%d\nwidth:%d\nprecision:%d\ndot:%d\n",
+	info->index, info->count,
+	flags->minus, flags->plus, flags->hash,
+	flags->zero, flags->space,
+	flags->width, flags->precesion, flags->dot);
+	return ;
+}
+	/*int		nb;
 	char	*nb_char;
 
 	nb = va_arg(info->args, int);
@@ -22,5 +30,4 @@ void	print_int(const char *format, t_list *info, t_flags *flags)
 	else
 		nb_char = ft_itoa(nb);
 	printf("digit test:%s", nb_char);
-	printf("\nprecesion:%d", flags->precesion);
-}
+	printf("\nprecesion:%d", flags->precesion);*/

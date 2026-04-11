@@ -13,4 +13,5 @@
 
 void	print_hex_upper(const char *format, t_list *info, t_flags *flags)
 {
+    return ;
 }

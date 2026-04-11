@@ -15,12 +15,12 @@ void	init_type(const char *format, t_list *info, t_flags *flags)
 {
 	char	c;
 
-	printf("\nindex:%ld\ncount:%ld\nminus:%d\nplus:%d\nhash:%d\n"
+	/*printf("\nindex:%ld\ncount:%ld\nminus:%d\nplus:%d\nhash:%d\n"
 		"zero:%d\nspace:%d\nwidth:%d\nprecision:%d\ndot:%d\n",
 		info->index, info->count,
 		flags->minus, flags->plus, flags->hash,
 		flags->zero, flags->space,
-		flags->width, flags->precesion, flags->dot);
+		flags->width, flags->precesion, flags->dot);*/
 	c = format[info->index];
 	if (c == 'i' || c == 'd')
 		print_int(format, info, flags);
@@ -55,5 +55,5 @@ void	init_flags(const char *format, t_list *info, t_flags *flags)
 			flags->space = 1;
 		info->index++;
 	}
-	conflict_remove(flags);
+	//conflict_remove(flags);
 }
