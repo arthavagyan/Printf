@@ -47,4 +47,11 @@ void	conflict_remove(t_flags *flags, t_list *info)
 		flags->space = 0;
 	if (flags->hash && (info->type != 'x' || info->type != 'X'))
 		flags->hash = 0;
+	if (info->type == 'u')
+	{
+		if (flags->precision != -1)
+			flags->zero = 0;
+		flags->space = 0;
+		flags->plus = 0;
+	}
 }

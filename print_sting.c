@@ -6,12 +6,12 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 20:21:06 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/01 20:22:46 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/12 20:07:03 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 void	print_string(const char *format, t_list *info, t_flags *flags)
 {
-    return ;
+	return ;
 }

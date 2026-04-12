@@ -6,7 +6,7 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 13:59:41 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/01 20:15:27 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/12 20:23:19 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -52,20 +52,22 @@ int		ft_printf(const char *format, ...);
 int		ft_isdigit(int c);
 
 void	parse_precesion(const char *format, t_list *info, t_flags *flags);
-void	print_hex_upper(const char *format, t_list *info, t_flags *flags);//print
-void	print_hex_lower(const char *format, t_list *info, t_flags *flags);//print
-void	print_unsigned(const char *format, t_list *info, t_flags *flags);//print
-void	print_string(const char *format, t_list *info, t_flags *flags);//print
 void	parse_width(const char *format, t_list *info, t_flags *flags);
+void	assemble_number(t_list *info, t_flags *flags, t_digit *digit);
 void	init_flags(const char *format, t_list *info, t_flags *flags);
-void	print_char(const char *format, t_list *info, t_flags *flags);//print
 void	init_type(const char *format, t_list *info, t_flags *flags);
-void	print_int(const char *format, t_list *info, t_flags *flags);//print
+void	return_char_number(t_flags *flags, t_digit *digit);
+void	return_total_len(t_flags *flags, t_digit *digit);
 void	parse_format(const char *format, t_list *info);
 void	parse_flags(const char *format, t_list *info);
 void	conflict_remove(t_flags *flags, t_list *info);
+void	print_unsigned(t_list *info, t_flags *flags);
+//void	print_hex_upper(t_list *info, t_flags *flags);
+//void	print_hex_lower(t_list *info, t_flags *flags);
 void	ft_put_n_char(t_list *info, char c, int n);
-//void	if_negative(long *number, int *sign);
+//void	print_string(t_list *info, t_flags *flags);
+void	print_int(t_list *info, t_flags *flags);
+//void	print_char(t_list *info, t_flags *flags);
 void	ft_putchar(char c, t_list *info);
 void	flag_zero_fill(t_flags *flags);
 
@@ -74,5 +76,5 @@ size_t	ft_strlen(const char *s);
 
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s);
-char	*ft_itoa(int n);
+char	*ft_itoa(long n);
 #endif

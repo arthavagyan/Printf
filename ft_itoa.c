@@ -42,7 +42,7 @@ static void	if_negative(long *number, int *sign)
 	}
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long n)
 {
 	long	number;
 	int		sign;
@@ -56,7 +56,7 @@ char	*ft_itoa(int n)
 	result = malloc(len + 1);
 	if (!result)
 		return (NULL);
-	result[len + 1] = '\0';
+	result[len] = '\0';
 	if (n == 0)
 		result[0] = '0';
 	if (sign == -1)

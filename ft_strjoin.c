@@ -6,7 +6,7 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 20:03:24 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/01 20:11:40 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/12 20:07:47 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -73,4 +73,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(result, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
 	return (result);
 }
-
