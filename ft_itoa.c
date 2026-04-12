@@ -33,7 +33,7 @@ static size_t	number_len1(long number)
 	return (len);
 }
 
-void	if_negative(long *number, int *sign)
+static void	if_negative(long *number, int *sign)
 {
 	if (*number < 0)
 	{

@@ -18,6 +18,19 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
+void	ft_put_n_char(t_list *info, char c, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		write(1, &c, 1);
+		info->count++;
+		i++;
+	}
+}
+
 void	ft_putchar(char c, t_list *info)
 {
 	write(1, &c, 1);

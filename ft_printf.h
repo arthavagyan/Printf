@@ -37,6 +37,17 @@ typedef struct f_list
 	int	dot;
 }		t_flags;
 
+typedef struct d_list
+{
+	long	number;
+	int		sign_len;
+	int		zero_count;
+	int		space_count;
+	int		total_val_len;
+	char	sign;
+	char	*number_char;
+}		t_digit;
+
 int		ft_printf(const char *format, ...);
 int		ft_isdigit(int c);
 
@@ -53,7 +64,8 @@ void	print_int(const char *format, t_list *info, t_flags *flags);//print
 void	parse_format(const char *format, t_list *info);
 void	parse_flags(const char *format, t_list *info);
 void	conflict_remove(t_flags *flags, t_list *info);
-void	if_negative(long *number, int *sign);
+void	ft_put_n_char(t_list *info, char c, int n);
+//void	if_negative(long *number, int *sign);
 void	ft_putchar(char c, t_list *info);
 void	flag_zero_fill(t_flags *flags);
 

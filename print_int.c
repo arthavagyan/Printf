@@ -11,55 +11,84 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static char	sign_finder(int neg, t_flags *flags)
+static int	total_len(char *number_char, t_flags *flags)
 {
-	if (neg)
-		return ('-');
+	int	len_number_char;
+	int	zero_count;
+
+	zero_count = 0;
+	len_number_char = ft_strlen(number_char);
+	if (flags->precision > len_number_char)
+		zero_count = flags->precision - len_number_char;
+}
+
+static void	return_char_int(t_flags *flags, t_digit *digit)
+{
+	digit->sign_len = 0;
+	digit->sign = 0;
+	if (digit->number < 0)
+	{
+		digit->sign_len = 1;
+		digit->number *= -1;
+		digit->sign = '-';
+	}
 	else if (flags->plus)
-		return ('+');
+	{
+		digit->sign_len = 1;
+		digit->sign = '+';
+	}
 	else if (flags->space)
-		return (' ');
-	return (0);
+	{
+		digit->sign_len = 1;
+		digit->sign = ' ';
+	}
+	digit->number_char = ft_itoa(digit->number);
+	if (flags->dot && flags->precision == 0 && digit->number == 0)
+	{
+		free(digit->number_char);
+		digit->number_char = ft_strdup("");
+	}
+}
+
+static void	return_total_len(t_flags *flags, t_digit *digit)
+{
+	int	num_len;
+
+	num_len = ft_strlen(digit->number_char);
+	digit->zero_count = 0;
+	digit->space_count = 0;
+	if (flags->dot && flags->precision > num_len)
+		digit->zero_count = flags->precision - num_len;
+	digit->total_val_len = digit->zero_count + num_len + digit->sign_len;
+	if (flags->width > digit->total_val_len)
+		digit->space_count = flags->width - digit->total_val_len;
+}
+
+static void	assemble_number(t_list *info, t_flags *flags, t_digit *digit)
+{
+	int	i;
+
+	i = 0;
+	if (!flags->minus && (!flags->zero || !flags->dot))
+		ft_put_n_char(info, ' ', digit->space_count);
+	if (digit->sign_len)
+		ft_put_n_char(info, digit->sign, digit->sign_len);
+	if (!flags->minus && flags->zero && !flags->dot)
+		ft_put_n_char(info, '0', digit->space_count);
+	ft_put_n_char(info, '0', digit->zero_count);
+	while (digit->number_char[i])
+	{
+		ft_put_n_char(info, digit->number_char[i], 1);
+	}
 }
 
 void	print_int(const char *format, t_list *info, t_flags *flags)
 {
+	t_digit	digit;
 	int		number_int;
-	int		neg;
-	char	sign;
-	char	*number_char;
 
-	neg = 1;
 	number_int = va_arg(info->args, int);
-	if_negative(&number_int, &neg);
-	number_char = ft_itoa(number_int);
-	if (flags->precision == 0 && number_int == 0)
-	{
-		free(number_char);
-		number_char = ft_strdup("");
-	}
-	sign = sign_finder(neg, flags);
-	
+	digit.number = (long)number_int;
+	return_char_int(flags, &digit);
+	return_total_len(flags, &digit);
 }
-/*{
-	printf("\nindex:%ld\ncount:%ld\nminus:%d\nplus:%d\nhash:%d\n"
-	"zero:%d\nspace:%d\nwidth:%d\nprecision:%d\ndot:%d\n",
-	info->index, info->count,
-	flags->minus, flags->plus, flags->hash,
-	flags->zero, flags->space,
-	flags->width, flags->precision, flags->dot);
-	return ;
-}
-{
-	int		nb;
-	char	*nb_char;
-
-	nb = va_arg(info->args, int);
-	if (flags->precision == 0 && nb == 0)
-		nb_char = " ";
-	else
-		nb_char = ft_itoa(nb);
-	printf("digit test:%s", nb_char);
-	printf("\nprecesion:%d", flags->precision);
-}
-*/
