@@ -22,6 +22,7 @@ typedef struct s_list
 	va_list	args;
 	size_t	index;
 	size_t	count;
+	char	type;
 }		t_list;
 
 typedef struct f_list
@@ -32,7 +33,7 @@ typedef struct f_list
 	int	zero;
 	int	space;
 	int	width;
-	int	precesion;
+	int	precision;
 	int	dot;
 }		t_flags;
 
@@ -43,19 +44,21 @@ void	parse_precesion(const char *format, t_list *info, t_flags *flags);
 void	print_hex_upper(const char *format, t_list *info, t_flags *flags);//print
 void	print_hex_lower(const char *format, t_list *info, t_flags *flags);//print
 void	print_unsigned(const char *format, t_list *info, t_flags *flags);//print
-void	parse_width(const char *format, t_list *info, t_flags *flags);
 void	print_string(const char *format, t_list *info, t_flags *flags);//print
+void	parse_width(const char *format, t_list *info, t_flags *flags);
 void	init_flags(const char *format, t_list *info, t_flags *flags);
-void	init_type(const char *format, t_list *info, t_flags *flags);
 void	print_char(const char *format, t_list *info, t_flags *flags);//print
+void	init_type(const char *format, t_list *info, t_flags *flags);
 void	print_int(const char *format, t_list *info, t_flags *flags);//print
 void	parse_format(const char *format, t_list *info);
 void	parse_flags(const char *format, t_list *info);
+void	conflict_remove(t_flags *flags, t_list *info);
+void	if_negative(long *number, int *sign);
 void	ft_putchar(char c, t_list *info);
-void	conflict_remove(t_flags *flags);
 void	flag_zero_fill(t_flags *flags);
 
 size_t	number_len(long number);
+size_t	ft_strlen(const char *s);
 
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s);

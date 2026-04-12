@@ -11,16 +11,6 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
 static size_t	ft_strlcpy(char dst[], const char src[], size_t size)
 {
 	size_t	i;

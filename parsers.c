@@ -31,22 +31,22 @@ void	parse_width(const char *format, t_list *info, t_flags *flags)
 	}
 }
 
-void	parse_precesion(const char *format, t_list *info, t_flags *flags)
+void	parse_precision(const char *format, t_list *info, t_flags *flags)
 {
-	flags->precesion = -1;
+	flags->precision = -1;
 	if (format[info->index] == '.')
 	{
 		flags->dot = 1;
-		flags->precesion = 0;
+		flags->precision = 0;
 		info->index++;
 		if (format[info->index] == '*')
 		{
-			flags->precesion = va_arg(info->args, int);
+			flags->precision = va_arg(info->args, int);
 			info->index++;
 		}
 		while (ft_isdigit(format[info->index]))
 		{
-			flags->precesion = flags->precesion * 10
+			flags->precision = flags->precision * 10
 				+ (format[info->index] - '0');
 			info->index++;
 		}
@@ -72,7 +72,7 @@ void	parse_flags(const char *format, t_list *info)
 	flag_zero_fill(&flags);
 	init_flags(format, info, &flags);
 	parse_width(format, info, &flags);
-	parse_precesion(format, info, &flags);
+	parse_precision(format, info, &flags);
 	init_type(format, info, &flags);
 }
 

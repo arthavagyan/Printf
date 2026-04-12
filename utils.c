@@ -24,22 +24,14 @@ void	ft_putchar(char c, t_list *info)
 	info->count++;
 }
 
-void	conflict_remove(t_flags *flags)
+void	conflict_remove(t_flags *flags, t_list *info)
 {
 	if (flags->minus)
 		flags->zero = 0;
-	if (flags->precesion >= 0)
+	if (flags->precision >= 0 && (info->type != 's' || info->type != 'c'))
 		flags->zero = 0;
 	if (flags->plus)
 		flags->space = 0;
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (flags->hash && (info->type != 'x' || info->type != 'X'))
+		flags->hash = 0;
 }

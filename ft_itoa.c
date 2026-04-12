@@ -33,7 +33,7 @@ static size_t	number_len1(long number)
 	return (len);
 }
 
-static void	if_negative(long *number, int *sign)
+void	if_negative(long *number, int *sign)
 {
 	if (*number < 0)
 	{
@@ -54,9 +54,9 @@ char	*ft_itoa(int n)
 	len = number_len1(number);
 	if_negative (&number, &sign);
 	result = malloc(len + 1);
-	result[len + 1] = '\0';
 	if (!result)
 		return (NULL);
+	result[len + 1] = '\0';
 	if (n == 0)
 		result[0] = '0';
 	if (sign == -1)

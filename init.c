@@ -15,24 +15,19 @@ void	init_type(const char *format, t_list *info, t_flags *flags)
 {
 	char	c;
 
-	/*printf("\nindex:%ld\ncount:%ld\nminus:%d\nplus:%d\nhash:%d\n"
-		"zero:%d\nspace:%d\nwidth:%d\nprecision:%d\ndot:%d\n",
-		info->index, info->count,
-		flags->minus, flags->plus, flags->hash,
-		flags->zero, flags->space,
-		flags->width, flags->precesion, flags->dot);*/
-	c = format[info->index];
-	if (c == 'i' || c == 'd')
+	info->type = format[info->index];
+	conflict_remove(flags, info);
+	if (info->type == 'i' || info->type == 'd')
 		print_int(format, info, flags);
-	else if (c == 'x')
+	else if (info->type == 'x')
 		print_hex_lower(format, info, flags);
-	else if (c == 'X')
+	else if (info->type == 'X')
 		print_hex_upper(format, info, flags);
-	else if (c == 'u')
+	else if (info->type == 'u')
 		print_unsigned(format, info, flags);
-	else if (c == 's')
+	else if (info->type == 's')
 		print_string(format, info, flags);
-	else if (c == 'c')
+	else if (info->type == 'c')
 		print_char(format, info, flags);
 	info->index++;
 }
@@ -55,5 +50,4 @@ void	init_flags(const char *format, t_list *info, t_flags *flags)
 			flags->space = 1;
 		info->index++;
 	}
-	//conflict_remove(flags);
 }
