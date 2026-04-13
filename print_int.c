@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	return_char_number(t_flags *flags, t_digit *digit)
+static void	return_char_number(t_flags *flags, t_digit *digit)
 {
 	digit->sign_len = 0;
 	digit->sign = 0;
@@ -39,7 +39,7 @@ void	return_char_number(t_flags *flags, t_digit *digit)
 	}
 }
 
-void	return_total_len(t_flags *flags, t_digit *digit)
+static void	return_total_len(t_flags *flags, t_digit *digit)
 {
 	int	num_len;
 
@@ -55,7 +55,7 @@ void	return_total_len(t_flags *flags, t_digit *digit)
 		digit->space_count = flags->width - digit->total_val_len;
 }
 
-void	assemble_number(t_list *info, t_flags *flags, t_digit *digit)
+static void	assemble_number(t_list *info, t_flags *flags, t_digit *digit)
 {
 	int	i;
 

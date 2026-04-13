@@ -44,6 +44,7 @@ typedef struct d_list
 	int		zero_count;
 	int		space_count;
 	int		total_val_len;
+	unsigned int	number_u;
 	char	sign;
 	char	*number_char;
 }		t_digit;
@@ -53,11 +54,8 @@ int		ft_isdigit(int c);
 
 void	parse_precesion(const char *format, t_list *info, t_flags *flags);
 void	parse_width(const char *format, t_list *info, t_flags *flags);
-void	assemble_number(t_list *info, t_flags *flags, t_digit *digit);
 void	init_flags(const char *format, t_list *info, t_flags *flags);
 void	init_type(const char *format, t_list *info, t_flags *flags);
-void	return_char_number(t_flags *flags, t_digit *digit);
-void	return_total_len(t_flags *flags, t_digit *digit);
 void	parse_format(const char *format, t_list *info);
 void	parse_flags(const char *format, t_list *info);
 void	conflict_remove(t_flags *flags, t_list *info);
