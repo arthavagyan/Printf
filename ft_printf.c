@@ -22,7 +22,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[info.index] != '%')
 		{
-			ft_putchar(format[info.index], &info);
+			ft_put_n_char(&info, format[info.index], 1);
 			info.index++;
 		}
 		else

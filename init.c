@@ -14,7 +14,7 @@
 void	init_type(const char *format, t_list *info, t_flags *flags)
 {
 	info->type = format[info->index];
-	conflict_remove(flags, info);
+	conflict_remove(info, flags);
 	if (info->type == 'i' || info->type == 'd')
 		print_int(info, flags);
 	else if (info->type == 'x' || info->type == 'X')
@@ -50,20 +50,4 @@ void	init_flags(const char *format, t_list *info, t_flags *flags)
 			flags->space = 1;
 		info->index++;
 	}
-}
-
-int	non_type(const char *format)
-{
-	int	i;
-
-	i = 0;
-	while (format[i])
-	{
-		if (format[i] == 'd' || format[i] == 'i' || format[i] == 'u'
-			|| format[i] == 'X' || format[i] == 'x' || format[i] == 'p'
-			|| format[i] == 's' || format[i] == 'c' || format[i] == '%')
-			return (1);
-		i++;
-	}
-	return (0);
 }

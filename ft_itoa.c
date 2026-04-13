@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static size_t	number_len1(long number)
+static size_t	number_len(long number)
 {
 	long	n;
 	size_t	len;
@@ -51,7 +51,7 @@ char	*ft_itoa(long n)
 
 	number = n;
 	sign = 1;
-	len = number_len1(number);
+	len = number_len(number);
 	if_negative (&number, &sign);
 	result = malloc(len + 1);
 	if (!result)

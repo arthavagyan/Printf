@@ -34,21 +34,21 @@ static void	return_hex_format(t_bonus *bonus)
 
 	base = "0123456789abcdef";
 	len = hex_len(bonus) + 2;
-	bonus->number_char = malloc(len + 1);
-	if (!(bonus->number_char))
+	bonus->str = malloc(len + 1);
+	if (!(bonus->str))
 		return ;
-	bonus->number_char[0] = '0';
-	bonus->number_char[1] = 'x';
-	bonus->number_char[len] = '\0';
+	bonus->str[0] = '0';
+	bonus->str[1] = 'x';
+	bonus->str[len] = '\0';
 	if (!bonus->pointer_number)
 	{
-		free(bonus->number_char);
-		bonus->number_char = ft_strdup("(nil)");
+		free(bonus->str);
+		bonus->str = ft_strdup("(nil)");
 	}
 	number = bonus->pointer_number;
 	while (number > 0)
 	{
-		bonus->number_char[len - 1] = base[number % 16];
+		bonus->str[len - 1] = base[number % 16];
 		len--;
 		number /= 16;
 	}
@@ -58,7 +58,7 @@ static void	return_total_len(t_flags *flags, t_bonus *bonus)
 {
 	int	num_len;
 
-	num_len = ft_strlen(bonus->number_char);
+	num_len = ft_strlen(bonus->str);
 	bonus->space_count = 0;
 	if (flags->width > num_len)
 		bonus->space_count = flags->width - num_len;
@@ -71,9 +71,9 @@ static void	assemble_number(t_list *info, t_flags *flags, t_bonus *bonus)
 	i = 0;
 	if (!flags->minus && (!flags->zero || !flags->dot))
 		ft_put_n_char(info, ' ', bonus->space_count);
-	while (bonus->number_char[i])
+	while (bonus->str[i])
 	{
-		ft_put_n_char(info, bonus->number_char[i], 1);
+		ft_put_n_char(info, bonus->str[i], 1);
 		i++;
 	}
 	if (flags->minus && bonus->space_count > 0)
@@ -90,5 +90,5 @@ void	print_pointer(t_list *info, t_flags *flags)
 	return_hex_format(&bonus);
 	return_total_len(flags, &bonus);
 	assemble_number(info, flags, &bonus);
-	free(bonus.number_char);
+	free(bonus.str);
 }

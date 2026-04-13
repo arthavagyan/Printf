@@ -11,19 +11,19 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static void	null_check(t_bonus *bonus, t_flags *flags)
+static void	null_check(t_flags *flags, t_bonus *bonus)
 {
 	bonus->null_index = 0;
-	if (!bonus->number_char)
+	if (!bonus->str)
 	{
 		if ((flags->dot && flags->precision >= 6) || !flags->dot)
 		{
-			bonus->number_char = ft_strdup("(null)");
+			bonus->str = ft_strdup("(null)");
 			bonus->null_index = 1;
 		}
 		else
 		{
-			bonus->number_char = ft_strdup("");
+			bonus->str = ft_strdup("");
 			bonus->null_index = 1;
 		}
 	}
@@ -35,7 +35,7 @@ static void	return_total_len(t_flags *flags, t_bonus *bonus)
 
 	bonus->str_limit = 0;
 	bonus->space_count = 0;
-	str_len = ft_strlen(bonus->number_char);
+	str_len = ft_strlen(bonus->str);
 	if (flags->dot && flags->precision < str_len)
 		bonus->str_limit = flags->precision;
 	else
@@ -53,7 +53,7 @@ static void	assemble_number(t_list *info, t_flags *flags, t_bonus *bonus)
 		ft_put_n_char(info, ' ', bonus->space_count);
 	while (i < bonus->str_limit)
 	{
-		ft_put_n_char(info, bonus->number_char[i], 1);
+		ft_put_n_char(info, bonus->str[i], 1);
 		i++;
 	}
 	if (flags->minus && bonus->space_count > 0)
@@ -64,10 +64,10 @@ void	print_string(t_list *info, t_flags *flags)
 {
 	t_bonus	bonus;
 
-	bonus.number_char = va_arg(info->args, char *);
-	null_check(&bonus, flags);
+	bonus.str = va_arg(info->args, char *);
+	null_check(flags, &bonus);
 	return_total_len(flags, &bonus);
 	assemble_number(info, flags, &bonus);
 	if (bonus.null_index)
-		free(bonus.number_char);
+		free(bonus.str);
 }

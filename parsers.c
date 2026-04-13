@@ -57,21 +57,12 @@ void	parse_format(const char *format, t_list *info)
 {
 	if (format[info->index] && format[info->index] == '%')
 	{
-		ft_putchar(format[info->index], info);
+		ft_put_n_char(info, format[info->index], 1);
 		info->index++;
 		return ;
 	}
 	else
-	{
-		if (!non_type(format))
-		{
-			ft_putchar('%', info);
-			ft_putchar(format[info->index], info);
-			info->index++;
-			return ;
-		}
 		parse_flags(format, info);
-	}
 }
 
 void	parse_flags(const char *format, t_list *info)

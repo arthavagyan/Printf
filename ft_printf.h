@@ -50,12 +50,11 @@ typedef struct d_list
 	int					null_index;
 	char				sign;
 	char				symbol;
-	char				*number_char;
+	char				*str;
 	char				*base;
 }		t_bonus;
 
 int		ft_printf(const char *format, ...);
-int		non_type(const char *format);
 int		ft_isdigit(int c);
 
 void	parse_precesion(const char *format, t_list *info, t_flags *flags);
@@ -64,7 +63,7 @@ void	init_flags(const char *format, t_list *info, t_flags *flags);
 void	init_type(const char *format, t_list *info, t_flags *flags);
 void	parse_format(const char *format, t_list *info);
 void	parse_flags(const char *format, t_list *info);
-void	conflict_remove(t_flags *flags, t_list *info);
+void	conflict_remove(t_list *info, t_flags *flags);
 void	print_unsigned(t_list *info, t_flags *flags);
 void	print_pointer(t_list *info, t_flags *flags);
 void	ft_put_n_char(t_list *info, char c, int n);
@@ -72,10 +71,8 @@ void	print_string(t_list *info, t_flags *flags);
 void	print_char(t_list *info, t_flags *flags);
 void	print_hex(t_list *info, t_flags *flags);
 void	print_int(t_list *info, t_flags *flags);
-void	ft_putchar(char c, t_list *info);
 void	flag_zero_fill(t_flags *flags);
 
-size_t	number_len(long number);
 size_t	ft_strlen(const char *s);
 
 char	*ft_strjoin(char const *s1, char const *s2);

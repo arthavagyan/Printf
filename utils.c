@@ -31,13 +31,7 @@ void	ft_put_n_char(t_list *info, char c, int n)
 	}
 }
 
-void	ft_putchar(char c, t_list *info)
-{
-	write(1, &c, 1);
-	info->count++;
-}
-
-static void	conflict_type_remove(t_flags *flags, t_list *info)
+static void	conflict_remove_continue(t_list *info, t_flags *flags)
 {
 	if (info->type == 'u')
 	{
@@ -61,7 +55,7 @@ static void	conflict_type_remove(t_flags *flags, t_list *info)
 	}
 }
 
-void	conflict_remove(t_flags *flags, t_list *info)
+void	conflict_remove(t_list *info, t_flags *flags)
 {
 	if (flags->minus)
 		flags->zero = 0;
@@ -85,5 +79,5 @@ void	conflict_remove(t_flags *flags, t_list *info)
 		flags->dot = 0;
 		flags->precision = -1;
 	}
-	conflict_type_remove(flags, info);
+	conflict_remove_continue(info, flags);
 }

@@ -26,28 +26,28 @@ static int	hex_len(t_bonus *bonus)
 	return (len);
 }
 
-static void	return_hex_format(t_bonus *bonus, t_flags *flags)
+static void	return_hex_format(t_flags *flags, t_bonus *bonus)
 {
 	int				len;
 	unsigned int	number;
 
 	len = hex_len(bonus);
-	bonus->number_char = malloc(len + 1);
-	if (!(bonus->number_char))
+	bonus->str = malloc(len + 1);
+	if (!(bonus->str))
 		return ;
-	bonus->number_char[len] = '\0';
+	bonus->str[len] = '\0';
 	if (bonus->number_u == 0)
 	{
-		free(bonus->number_char);
+		free(bonus->str);
 		if ((flags->dot && flags->precision >= 1) || !flags->dot)
-			bonus->number_char = ft_strdup("0");
+			bonus->str = ft_strdup("0");
 		else
-			bonus->number_char = ft_strdup("");
+			bonus->str = ft_strdup("");
 	}
 	number = bonus->number_u;
 	while (number > 0)
 	{
-		bonus->number_char[len - 1] = bonus->base[number % 16];
+		bonus->str[len - 1] = bonus->base[number % 16];
 		len--;
 		number /= 16;
 	}
@@ -57,7 +57,7 @@ static void	return_total_len(t_flags *flags, t_bonus *bonus)
 {
 	int	num_len;
 
-	num_len = ft_strlen(bonus->number_char);
+	num_len = ft_strlen(bonus->str);
 	bonus->zero_count = 0;
 	bonus->sign_len = 0;
 	bonus->space_count = 0;
@@ -90,9 +90,9 @@ static void	assemble_number(t_list *info, t_flags *flags, t_bonus *bonus)
 	if (!flags->minus && flags->zero && !flags->dot)
 		ft_put_n_char(info, '0', bonus->space_count);
 	ft_put_n_char(info, '0', bonus->zero_count);
-	while (bonus->number_char[i])
+	while (bonus->str[i])
 	{
-		ft_put_n_char(info, bonus->number_char[i], 1);
+		ft_put_n_char(info, bonus->str[i], 1);
 		i++;
 	}
 	if (flags->minus && bonus->space_count > 0)
@@ -111,8 +111,8 @@ void	print_hex(t_list *info, t_flags *flags)
 		bonus.base = "0123456789ABCDEF";
 	}
 	bonus.number_u = va_arg(info->args, unsigned int);
-	return_hex_format(&bonus, flags);
+	return_hex_format(flags, &bonus);
 	return_total_len(flags, &bonus);
 	assemble_number(info, flags, &bonus);
-	free(bonus.number_char);
+	free(bonus.str);
 }

@@ -13,11 +13,11 @@
 
 static void	return_char_number(t_flags *flags, t_bonus *bonus)
 {
-	bonus->number_char = ft_itoa(bonus->number_u);
+	bonus->str = ft_itoa(bonus->number_u);
 	if (flags->dot && flags->precision == 0 && bonus->number_u == 0)
 	{
-		free(bonus->number_char);
-		bonus->number_char = ft_strdup("");
+		free(bonus->str);
+		bonus->str = ft_strdup("");
 	}
 }
 
@@ -25,7 +25,7 @@ static void	return_total_len(t_flags *flags, t_bonus *bonus)
 {
 	int	num_len;
 
-	num_len = ft_strlen(bonus->number_char);
+	num_len = ft_strlen(bonus->str);
 	bonus->zero_count = 0;
 	bonus->space_count = 0;
 	if (flags->dot && flags->precision > num_len)
@@ -47,9 +47,9 @@ static void	assemble_number(t_list *info, t_flags *flags, t_bonus *bonus)
 	if (!flags->minus && flags->zero && !flags->dot)
 		ft_put_n_char(info, '0', bonus->space_count);
 	ft_put_n_char(info, '0', bonus->zero_count);
-	while (bonus->number_char[i])
+	while (bonus->str[i])
 	{
-		ft_put_n_char(info, bonus->number_char[i], 1);
+		ft_put_n_char(info, bonus->str[i], 1);
 		i++;
 	}
 	if (flags->minus && bonus->space_count > 0)
@@ -64,5 +64,5 @@ void	print_unsigned(t_list *info, t_flags *flags)
 	return_char_number(flags, &bonus);
 	return_total_len(flags, &bonus);
 	assemble_number(info, flags, &bonus);
-	free(bonus.number_char);
+	free(bonus.str);
 }
