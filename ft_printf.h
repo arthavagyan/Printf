@@ -6,7 +6,7 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 13:59:41 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/12 20:23:19 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/13 19:00:59 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -39,14 +39,18 @@ typedef struct f_list
 
 typedef struct d_list
 {
-	long	number;
-	int		sign_len;
-	int		zero_count;
-	int		space_count;
-	int		total_val_len;
+	long			number;
 	unsigned int	number_u;
-	char	sign;
-	char	*number_char;
+	int				sign_len;
+	int				uppercase;
+	int				zero_count;
+	int				space_count;
+	int				total_val_len;
+	int				str_limit;
+	int				null_index;
+	char			sign;
+	char			symbol;
+	char			*number_char;
 }		t_digit;
 
 int		ft_printf(const char *format, ...);
@@ -60,12 +64,12 @@ void	parse_format(const char *format, t_list *info);
 void	parse_flags(const char *format, t_list *info);
 void	conflict_remove(t_flags *flags, t_list *info);
 void	print_unsigned(t_list *info, t_flags *flags);
-//void	print_hex_upper(t_list *info, t_flags *flags);
-//void	print_hex_lower(t_list *info, t_flags *flags);
+void	print_pointer(t_list *info, t_flags *flags);
 void	ft_put_n_char(t_list *info, char c, int n);
-//void	print_string(t_list *info, t_flags *flags);
+void	print_string(t_list *info, t_flags *flags);
+void	print_char(t_list *info, t_flags *flags);
+void	print_hex(t_list *info, t_flags *flags);
 void	print_int(t_list *info, t_flags *flags);
-//void	print_char(t_list *info, t_flags *flags);
 void	ft_putchar(char c, t_list *info);
 void	flag_zero_fill(t_flags *flags);
 

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex_upper.c                                  :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 15:54:06 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/12 20:07:30 by artavagy         ###   ########.fr       */
+/*   Created: 2026/04/13 22:10:41 by artavagy          #+#    #+#             */
+/*   Updated: 2026/04/13 22:10:46 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	print_hex_upper(const char *format, t_list *info, t_flags *flags)
+void    print_pointer(t_list *info, t_flags *flags)
 {
-	return ;
+    
 }
