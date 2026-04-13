@@ -13,7 +13,7 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_itoa.c ft_printf.c ft_strdup.c ft_strjoin.c init.c parsers.c print_int.c utils.c print_unsigned.c print_char.c print_hex.c print_string.c
+SRC = ft_itoa.c ft_printf.c ft_strdup.c ft_strjoin.c init.c parsers.c print_int.c utils.c print_unsigned.c print_char.c print_hex.c print_string.c print_pointer.c
 OBJS = $(SRC:.c=.o)
 
 bonus: all

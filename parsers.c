@@ -62,7 +62,16 @@ void	parse_format(const char *format, t_list *info)
 		return ;
 	}
 	else
+	{
+		if (!non_type(format))
+		{
+			ft_putchar('%', info);
+			ft_putchar(format[info->index], info);
+			info->index++;
+			return ;
+		}
 		parse_flags(format, info);
+	}
 }
 
 void	parse_flags(const char *format, t_list *info)

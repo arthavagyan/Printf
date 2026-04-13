@@ -13,7 +13,6 @@
 # define FT_PRINTF_H
 
 # include <unistd.h>
-# include <stdio.h>
 # include <stdarg.h>
 # include <stdlib.h>
 
@@ -39,21 +38,24 @@ typedef struct f_list
 
 typedef struct d_list
 {
-	long			number;
-	unsigned int	number_u;
-	int				sign_len;
-	int				uppercase;
-	int				zero_count;
-	int				space_count;
-	int				total_val_len;
-	int				str_limit;
-	int				null_index;
-	char			sign;
-	char			symbol;
-	char			*number_char;
-}		t_digit;
+	long				number;
+	unsigned int		number_u;
+	unsigned long long	pointer_number;
+	int					sign_len;
+	int					uppercase;
+	int					zero_count;
+	int					space_count;
+	int					total_val_len;
+	int					str_limit;
+	int					null_index;
+	char				sign;
+	char				symbol;
+	char				*number_char;
+	char				*base;
+}		t_bonus;
 
 int		ft_printf(const char *format, ...);
+int		non_type(const char *format);
 int		ft_isdigit(int c);
 
 void	parse_precesion(const char *format, t_list *info, t_flags *flags);

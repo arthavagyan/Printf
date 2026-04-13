@@ -11,27 +11,27 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static void	return_total_len(t_flags *flags, t_digit *digit)
+static void	return_total_len(t_flags *flags, t_bonus *bonus)
 {
-	digit->space_count = 0;
+	bonus->space_count = 0;
 	if (flags->width > 1)
-		digit->space_count = flags->width - 1;
+		bonus->space_count = flags->width - 1;
 }
 
-static void	assemble_char(t_list *info, t_flags *flags, t_digit *digit)
+static void	assemble_char(t_list *info, t_flags *flags, t_bonus *bonus)
 {
 	if (!flags->minus)
-		ft_put_n_char(info, ' ', digit->space_count);
-	ft_put_n_char(info, digit->symbol, 1);
+		ft_put_n_char(info, ' ', bonus->space_count);
+	ft_put_n_char(info, bonus->symbol, 1);
 	if (flags->minus)
-		ft_put_n_char(info, ' ', digit->space_count);
+		ft_put_n_char(info, ' ', bonus->space_count);
 }
 
 void	print_char(t_list *info, t_flags *flags)
 {
-	t_digit	digit;
+	t_bonus	bonus;
 
-	digit.symbol = (char)va_arg(info->args, int);
-	return_total_len(flags, &digit);
-	assemble_char(info, flags, &digit);
+	bonus.symbol = (char)va_arg(info->args, int);
+	return_total_len(flags, &bonus);
+	assemble_char(info, flags, &bonus);
 }

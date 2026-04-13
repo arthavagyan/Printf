@@ -46,7 +46,7 @@ static void	conflict_type_remove(t_flags *flags, t_list *info)
 		flags->space = 0;
 		flags->plus = 0;
 	}
-	if (info->type == 'c')
+	if (info->type == 'c' || info->type == '%')
 	{
 		flags->zero = 0;
 		flags->plus = 0;
@@ -76,7 +76,14 @@ void	conflict_remove(t_flags *flags, t_list *info)
 		flags->zero = 0;
 		flags->plus = 0;
 		flags->space = 0;
-		flags->hash = 0;
+	}
+	if (info->type == 'p')
+	{
+		flags->zero = 0;
+		flags->plus = 0;
+		flags->space = 0;
+		flags->dot = 0;
+		flags->precision = -1;
 	}
 	conflict_type_remove(flags, info);
 }

@@ -27,6 +27,8 @@ void	init_type(const char *format, t_list *info, t_flags *flags)
 		print_pointer(info, flags);
 	else if (info->type == 'c')
 		print_char(info, flags);
+	else if (info->type == '%')
+		ft_put_n_char(info, '%', 1);
 	info->index++;
 }
 
@@ -48,4 +50,20 @@ void	init_flags(const char *format, t_list *info, t_flags *flags)
 			flags->space = 1;
 		info->index++;
 	}
+}
+
+int	non_type(const char *format)
+{
+	int	i;
+
+	i = 0;
+	while (format[i])
+	{
+		if (format[i] == 'd' || format[i] == 'i' || format[i] == 'u'
+			|| format[i] == 'X' || format[i] == 'x' || format[i] == 'p'
+			|| format[i] == 's' || format[i] == 'c' || format[i] == '%')
+			return (1);
+		i++;
+	}
+	return (0);
 }
