@@ -1,74 +1,109 @@
-*This project has been created as part of the 42 curriculum by artavagy.*
-# ft_printf
+# 🖨️ ft_printf — A custom printf implementation
 
-## Description
-
-**`ft_printf`** is a custom implementation of the standard C function `printf`.
-
-This project focuses on understanding:
-- variadic functions (`va_list`)
-- formatted output
-- parsing and handling flags
-- width and precision
-- type conversions
-
-The goal is to recreate the behavior of the original `printf`, including its formatting rules and edge cases.
+<p align="center">
+  <img src="https://img.shields.io/badge/Score-125%2F100-success?style=for-the-badge&logo=42" alt="Score 125/100" />
+  <img src="https://img.shields.io/badge/Language-C-blue?style=for-the-badge&logo=c" alt="Language C" />
+  <img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge" alt="Status Completed" />
+</p>
 
 ---
 
-## The Goal of the Project
+## 📖 Description
 
-The main objectives of this project are:
+**ft_printf** is a project at **42 School**. The goal is to recreate the famous `printf` function from the standard C library. 
 
-- Implement a function `ft_printf` that:
-  - prints formatted output to the standard output
-  - returns the number of printed characters
+This project is a great way to learn about **Variadic Functions** in C and how to handle different data types. It is an important step in building a personal C library.
 
-## Instructions
+---
 
-- Support mandatory conversion specifiers:
-  - `%c` — character
-  - `%s` — string
-  - `%p` — pointer
-  - `%d` / `%i` — signed integer
-  - `%u` — unsigned integer
-  - `%x` / `%X` — hexadecimal
-  - `%%` — percent sign
+## 🎯 Project Goals
 
-- Implement bonus features:
-  - Flags:
-    - `-` (left alignment)
-    - `0` (zero padding)
-    - `.` (precision)
-    - `#` (alternative form for %x and %X)
-    - `+` (force sign)
-    - ` ` (space)
-  - Width handling
-  - Precision handling
+- Learn how to use `va_list`, `va_start`, `va_arg`, and `va_end`.
+- Practice parsing strings to find format specifiers.
+- Handle different types of output (numbers, strings, addresses).
+- Manage complex flags and formatting.
 
-To compile, run:
+---
 
-- make
+## ✨ Supported Conversions
 
-Is compiled using the provided Makefile and the `cc` compiler with the following flags:
- 
- - -Wall -Wextra -Werror
+The function handles the following format specifiers:
 
+| Specifier | Description |
+| :---: | :--- |
+| `%c` | Prints a single **character**. |
+| `%s` | Prints a **string** (as defined by the common C convention). |
+| `%p` | Prints the **void * pointer** argument in hexadecimal format. |
+| `%d` | Prints a **decimal** (base 10) number. |
+| `%i` | Prints an **integer** in base 10. |
+| `%u` | Prints an **unsigned decimal** (base 10) number. |
+| `%x` | Prints a number in **hexadecimal** (base 16) lowercase format. |
+| `%X` | Prints a number in **hexadecimal** (base 16) uppercase format. |
+| `%%` | Prints a **percent sign**. |
 
-This will generate the static library file `libftprintf.a` at the root of the repository.
+---
 
-### Makefile rules
+## 🌟 Bonus Features
 
-- make / make all  : To compile the library
-- make clean  : Remove object files
-- make fclean  : Remove object files and the library
-- make re : Recompile everything
+My version also supports these advanced flags:
 
-## Resources 
+*   **Field Width:** Sets the minimum width for the output.
+*   **Precision:** Handles the `.` flag for numbers and strings.
+*   **Flags:**
+    *   `-` Left-justify the output.
+    *   `0` Use zero-padding instead of spaces.
+    *   `#` Add a prefix to hexadecimal numbers (`0x` or `0X`).
+    *   `+` Always show the sign (+ or -) for numbers.
+    *   `(space)` Print a space before positive numbers.
 
-- Linux manual pages (man 3)
-- GNU C Library documentation
-- W3Schools.com
-- 42 intranet Libft subject
-- Google search resources
-- Peer on the right peer on the left and someone smart in the building
+---
+
+## 🛠️ How to Use
+
+### 1. Compilation
+To build the library, simply run the command below:
+
+```bash
+make
+```
+After running this, you will see a file named `libftprintf.a`.
+
+### 2. Integration
+To use **ft_printf** in your code, include the header file and link the library during compilation:
+
+```c
+#include "ft_printf.h"
+
+int main() 
+{
+    ft_printf("Hello %s, the number is %d\n", "World", 42);
+    return (0);
+}
+```
+
+**Example compilation command:**
+```bash
+cc main.c libftprintf.a -o my_program
+```
+
+### 3. Makefile Rules
+
+| Rule | Action |
+| :--- | :--- |
+| **make** | Compiles the library. |
+| **make clean** | Deletes object files. |
+| **make fclean** | Deletes object files and `libftprintf.a`. |
+| **make re** | Re-compiles the entire project. |
+
+---
+
+## 👨‍💻 Author
+
+This project was created by **artavagy** as part of the 42 curriculum.
+
+<div align="center">
+
+  [![GitHub Profile](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/artavagy)
+
+</div>
+
