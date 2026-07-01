@@ -103,7 +103,7 @@ This project was created by **artavagy** as part of the 42 curriculum.
 
 <div align="center">
 
-  [![GitHub Profile](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/artavagy)
+  [![GitHub Profile](https://img.shields.io/badge/GitHub-artavagy-181717?style=for-the-badge&logo=github)](https://github.com/arthavagyan)
 
 </div>
 
